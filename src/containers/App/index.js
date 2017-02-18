@@ -103,6 +103,7 @@ class App extends Component{
 
 			this.props.setNewDaySchedule({day, arr5});
 		});
+		console.log(schedule);
 	}
 
 	handleClearClick(){
@@ -178,7 +179,7 @@ class App extends Component{
 
 
 const mapStateToProps = store => {
-	console.log(store.appReducer);
+	// console.log(store.appReducer);
 	return {
 		schedule: store.appReducer
 	};

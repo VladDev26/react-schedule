@@ -20,7 +20,7 @@ html, body {
 
 .child {
   width: 4.16%;
-  height: 100px;
+  height: 4rem;
   display: inline-block;
   background: #fff;
   border: 1px solid #000; }
@@ -33,9 +33,9 @@ html, body {
   text-align: center;
   vertical-align: top; }
   .dayNames__item {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     width: 100%;
-    height: 100px;
+    height: 4rem;
     display: inline-block;
     background: #fff;
     border: 1px solid #000; }
@@ -49,7 +49,7 @@ html, body {
   .allday__item {
     cursor: pointer;
     width: 100%;
-    height: 100px;
+    height: 4rem;
     display: inline-block;
     background: #fff;
     border: 1px solid #000; }

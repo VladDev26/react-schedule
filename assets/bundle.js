@@ -10596,6 +10596,7 @@ var App = function (_Component) {
 
 				_this2.props.setNewDaySchedule({ day: day, arr5: arr5 });
 			});
+			console.log(schedule);
 		}
 	}, {
 		key: 'handleClearClick',
@@ -10679,7 +10680,7 @@ var App = function (_Component) {
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(store) {
-	console.log(store.appReducer);
+	// console.log(store.appReducer);
 	return {
 		schedule: store.appReducer
 	};
