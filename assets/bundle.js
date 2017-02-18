@@ -24459,7 +24459,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // const logger = createLogger();
 
 // import createLogger from 'redux-logger';
-
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
 var initialState = {};
 var store = configureStore(initialState);

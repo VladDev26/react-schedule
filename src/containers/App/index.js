@@ -15,7 +15,6 @@ for(let i=0; i<24; i++){ arr.push(i); }
 class App extends Component{
 	constructor(){
 		super();
-
 		this.mouseenterHandler = e => {
 			e.target.classList.toggle('active');
 		}
