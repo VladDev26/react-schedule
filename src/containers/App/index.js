@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Day from '../components/Day';
-import TimeRow from '../components/timeRow';
-import DayNames from '../components/dayNames';
-import AllDay from '../components/allDay';
+import Day from '../../components/Day';
+import TimeRow from '../../components/timeRow';
+import DayNames from '../../components/dayNames';
+import AllDay from '../../components/allDay';
+
+import * as action from './actions';
 
 const arr = [];
 for(let i=0; i<24; i++){ arr.push(i); }
@@ -159,11 +161,11 @@ class App extends Component{
 					{dayRow}
 				</div>
 
-				<div className="controls my-4">
-					<button className="btn btn-primary" onClick={saveClick}>
+				<div className="controls">
+					<button className="button" onClick={saveClick}>
 						save
 					</button>
-					<button className="btn btn-primary" onClick={clearClick}>
+					<button className="button" onClick={clearClick}>
 						clear
 					</button>
 				</div>
@@ -171,6 +173,10 @@ class App extends Component{
 		);
 	}
 }
+
+
+
+
 
 const mapStateToProps = store => {
 	console.log(store.appReducer);
@@ -180,10 +186,14 @@ const mapStateToProps = store => {
 };
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchInitial: () => dispatch({type: 'FETCH_INITIAL'}),
-		setNewDaySchedule: obj => dispatch({type: 'SET_NEW_DAY_SCHEDULE', payload: obj}),
-		clearSchedule: obj => dispatch({type: 'CLEAR_SCHEDULE', payload: obj}),
-		setAllDay: obj => dispatch({type: 'SET_ALL_DAY', payload: obj})
+		fetchInitial: () => dispatch(
+			action.fetchInitial()),
+		setNewDaySchedule: obj => dispatch(
+			action.setNewDaySchedule(obj)),
+		clearSchedule: obj => dispatch(
+			action.clearSchedule(obj)),
+		setAllDay: obj => dispatch(
+			action.setAllDay(obj))
 	};
 };
 

@@ -10456,21 +10456,27 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(55);
 
-var _Day = __webpack_require__(100);
+var _Day = __webpack_require__(99);
 
 var _Day2 = _interopRequireDefault(_Day);
 
-var _timeRow = __webpack_require__(103);
+var _timeRow = __webpack_require__(102);
 
 var _timeRow2 = _interopRequireDefault(_timeRow);
 
-var _dayNames = __webpack_require__(102);
+var _dayNames = __webpack_require__(101);
 
 var _dayNames2 = _interopRequireDefault(_dayNames);
 
-var _allDay = __webpack_require__(101);
+var _allDay = __webpack_require__(100);
 
 var _allDay2 = _interopRequireDefault(_allDay);
+
+var _actions = __webpack_require__(103);
+
+var action = _interopRequireWildcard(_actions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10653,15 +10659,15 @@ var App = function (_Component) {
 				),
 				_react2.default.createElement(
 					'div',
-					{ className: 'controls my-4' },
+					{ className: 'controls' },
 					_react2.default.createElement(
 						'button',
-						{ className: 'btn btn-primary', onClick: saveClick },
+						{ className: 'button', onClick: saveClick },
 						'save'
 					),
 					_react2.default.createElement(
 						'button',
-						{ className: 'btn btn-primary', onClick: clearClick },
+						{ className: 'button', onClick: clearClick },
 						'clear'
 					)
 				)
@@ -10681,16 +10687,16 @@ var mapStateToProps = function mapStateToProps(store) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	return {
 		fetchInitial: function fetchInitial() {
-			return dispatch({ type: 'FETCH_INITIAL' });
+			return dispatch(action.fetchInitial());
 		},
 		setNewDaySchedule: function setNewDaySchedule(obj) {
-			return dispatch({ type: 'SET_NEW_DAY_SCHEDULE', payload: obj });
+			return dispatch(action.setNewDaySchedule(obj));
 		},
 		clearSchedule: function clearSchedule(obj) {
-			return dispatch({ type: 'CLEAR_SCHEDULE', payload: obj });
+			return dispatch(action.clearSchedule(obj));
 		},
 		setAllDay: function setAllDay(obj) {
-			return dispatch({ type: 'SET_ALL_DAY', payload: obj });
+			return dispatch(action.setAllDay(obj));
 		}
 	};
 };
@@ -10771,12 +10777,6 @@ function reducer() {
 
 /***/ }),
 /* 97 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10786,7 +10786,7 @@ module.exports = __webpack_require__(141);
 
 
 /***/ }),
-/* 99 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10815,7 +10815,7 @@ thunk.withExtraArgument = createThunkMiddleware;
 exports['default'] = thunk;
 
 /***/ }),
-/* 100 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10862,7 +10862,7 @@ function Day(_ref) {
 exports.default = Day;
 
 /***/ }),
-/* 101 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10902,7 +10902,7 @@ function AllDays(_ref) {
 }
 
 /***/ }),
-/* 102 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10941,7 +10941,7 @@ function DayNames(_ref) {
 }
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10959,6 +10959,25 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function TimeRow() {
+	var arr = [];
+	for (var i = 0; i < 8; i++) {
+		arr.push(i);
+	}
+
+	var items = arr.map(function (item) {
+		return _react2.default.createElement(
+			"div",
+			{ key: item, className: "timeRow__item" },
+			_react2.default.createElement(
+				"span",
+				{ className: "timeRow__text" },
+				item *= 3,
+				":00"
+			),
+			_react2.default.createElement("span", { className: "timeRow__line" })
+		);
+	});
+
 	return _react2.default.createElement(
 		"div",
 		{ className: "timeRow" },
@@ -10972,87 +10991,47 @@ function TimeRow() {
 				"all day"
 			)
 		),
-		_react2.default.createElement(
-			"div",
-			{ className: "timeRow__item" },
-			_react2.default.createElement(
-				"span",
-				{ className: "timeRow__text" },
-				"00:00"
-			),
-			_react2.default.createElement("span", { className: "timeRow__line" })
-		),
-		_react2.default.createElement(
-			"div",
-			{ className: "timeRow__item" },
-			_react2.default.createElement(
-				"span",
-				{ className: "timeRow__text" },
-				"03:00"
-			),
-			_react2.default.createElement("span", { className: "timeRow__line" })
-		),
-		_react2.default.createElement(
-			"div",
-			{ className: "timeRow__item" },
-			_react2.default.createElement(
-				"span",
-				{ className: "timeRow__text" },
-				"06:00"
-			),
-			_react2.default.createElement("span", { className: "timeRow__line" })
-		),
-		_react2.default.createElement(
-			"div",
-			{ className: "timeRow__item" },
-			_react2.default.createElement(
-				"span",
-				{ className: "timeRow__text" },
-				"09:00"
-			),
-			_react2.default.createElement("span", { className: "timeRow__line" })
-		),
-		_react2.default.createElement(
-			"div",
-			{ className: "timeRow__item" },
-			_react2.default.createElement(
-				"span",
-				{ className: "timeRow__text" },
-				"12:00"
-			),
-			_react2.default.createElement("span", { className: "timeRow__line" })
-		),
-		_react2.default.createElement(
-			"div",
-			{ className: "timeRow__item" },
-			_react2.default.createElement(
-				"span",
-				{ className: "timeRow__text" },
-				"15:00"
-			),
-			_react2.default.createElement("span", { className: "timeRow__line" })
-		),
-		_react2.default.createElement(
-			"div",
-			{ className: "timeRow__item" },
-			_react2.default.createElement(
-				"span",
-				{ className: "timeRow__text" },
-				"18:00"
-			),
-			_react2.default.createElement("span", { className: "timeRow__line" })
-		),
-		_react2.default.createElement(
-			"div",
-			{ className: "timeRow__item" },
-			_react2.default.createElement(
-				"span",
-				{ className: "timeRow__text" },
-				"21:00"
-			),
-			_react2.default.createElement("span", { className: "timeRow__line" })
-		)
+		items
 	);
+}
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.fetchInitial = fetchInitial;
+exports.setNewDaySchedule = setNewDaySchedule;
+exports.clearSchedule = clearSchedule;
+exports.setAllDay = setAllDay;
+function fetchInitial() {
+    return { type: 'FETCH_INITIAL' };
+}
+
+function setNewDaySchedule(obj) {
+    return {
+        type: 'SET_NEW_DAY_SCHEDULE',
+        payload: obj
+    };
+}
+
+function clearSchedule(obj) {
+    return {
+        type: 'CLEAR_SCHEDULE',
+        payload: obj
+    };
+}
+
+function setAllDay(obj) {
+    return {
+        type: 'SET_ALL_DAY',
+        payload: obj
+    };
 }
 
 /***/ }),
@@ -24455,7 +24434,7 @@ var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(98);
+var _reactDom = __webpack_require__(97);
 
 var _reactRedux = __webpack_require__(55);
 
@@ -24463,32 +24442,31 @@ var _App = __webpack_require__(94);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _appReducer = __webpack_require__(95);
+var _reducer = __webpack_require__(95);
 
-var _appReducer2 = _interopRequireDefault(_appReducer);
+var _reducer2 = _interopRequireDefault(_reducer);
 
 __webpack_require__(96);
 
-__webpack_require__(97);
-
 var _redux = __webpack_require__(56);
 
-var _reduxThunk = __webpack_require__(99);
+var _reduxThunk = __webpack_require__(98);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // const logger = createLogger();
-var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
+
 // import createLogger from 'redux-logger';
 
+var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
 var initialState = {};
 var store = configureStore(initialState);
 
 function configureStore(initialState) {
     return (0, _redux.createStore)((0, _redux.combineReducers)({
-        appReducer: _appReducer2.default
+        appReducer: _reducer2.default
     }), initialState,
     // composeEnhancers(applyMiddleware(thunk, logger))
     composeEnhancers((0, _redux.applyMiddleware)(_reduxThunk2.default)));
