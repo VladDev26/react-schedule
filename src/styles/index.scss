@@ -1,0 +1,116 @@
+*{box-sizing:border-box;padding:0;margin:0;}
+
+
+
+html,body{width: 100%;}
+body{padding: 2em;}
+
+.wrapper{
+	width: 100%;
+	max-width: 100%;
+	max-height: 100%;
+	font-size: 0;
+}
+
+.myContainer{
+	display: inline-block; 
+	font-size: 0; 
+	width: 80%;
+}
+
+.child{
+	width: 4.16%;
+	height: 100px;
+	display: inline-block;
+	background: #fff;
+	border: 1px solid #000;
+	&.active{
+		background: #d9534f;
+	}
+}
+
+.button{
+	background: blue; 
+	padding: 1em 2em; 
+	margin-top: 2em;
+}
+
+
+.dayNames{
+	width: 10%;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+
+	&__item{
+		font-size: 3.5rem;
+		width: 100%;
+		height: 100px;
+		display: inline-block;
+		background: #fff;
+		border: 1px solid #000;
+		&.active{
+			background: #ddd;
+		}
+	}
+}
+
+.allday{
+	width: 10%;
+	display: inline-block;
+	vertical-align: top;
+
+	&__item{
+		cursor: pointer;
+		width: 100%;
+		height: 100px;
+		display: inline-block;
+		background: #fff;
+		border: 1px solid #000;
+		&.active{
+			background: #ddd;
+		}
+	}
+}
+
+.controls{
+	text-align: center;
+}
+
+
+
+.timeRow{
+	height: 44px;
+	font-size: 14px;
+	&__item{
+		min-height: 100%;
+		float: left;
+		width: 10%;
+		&--all{
+			// font-size: 1.5rem;
+			text-align: center;
+			position: relative;
+			& span{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+			}
+		}
+	}
+	&__text{
+		font-size: 14px;
+		display: block;
+	}
+	&__line{
+		border-left: 1px solid black;
+		display: block;
+		min-height: 25px;
+		height: 50%;
+	}
+	&:after{
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
