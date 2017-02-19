@@ -6,10 +6,9 @@ import TimeRow from '../../components/timeRow';
 import DayNames from '../../components/dayNames';
 import AllDay from '../../components/allDay';
 
-import * as action from './actions';
+import Controls from '../Controls';
 
-const arr = [];
-for(let i=0; i<24; i++){ arr.push(i); }
+import * as action from './actions';
 
 
 class App extends Component{
@@ -52,70 +51,6 @@ class App extends Component{
 		});
 	}
 
-	handleSaveClick(){
-		const schedule = this.props.schedule;
-
-		Object.keys(schedule).map(day => {
-
-			let elements = document.querySelectorAll('[data-day='+day+']');
-			let arr = [];
-
-			for(let i=0; i<elements.length; i++){
-				let isActive = elements[i].classList.contains('active');
-
-				if(isActive){
-					let range = elements[i].getAttribute('data-range');
-					let bt = range - 59;
-					let et = +range;
-					arr.push({bt, et});
-				}else{
-					arr.push(false);
-				}
-			}
-
-			let arr3 = [];
-			let arr2 = [];
-			for(let i=0; i<arr.length+1; i++){
-				if(arr[i]){
-					arr2.push(arr[i]);
-				}else{
-					arr3.push(arr2);
-					arr2 = [];
-				}
-			}
-
-			let arr4 = arr3.filter(i => i.length);
-
-			let arr5 = [];
-			arr4.map((el,i) => {
-				let obj = {};
-				if(el.length == 1){
-					obj.bt = el[0].bt;
-					obj.et = el[0].et;
-					arr5.push(obj);
-				}else{
-					let last = el.length-1;
-					obj.bt = el[0].bt;
-					obj.et = el[last].et;
-					arr5.push(obj);
-				}
-			});
-
-			this.props.setNewDaySchedule({day, arr5});
-		});
-	}
-
-	handleClearClick(){
-		let schedule = this.props.schedule;
-		for(let day in schedule){
-			schedule[day] = [];
-		}
-
-		// console.log('schedule', schedule);
-		this.props.clearSchedule(schedule);
-		let siblings = document.querySelectorAll('.child');
-		siblings.forEach(el => {el.classList.remove('active');});
-	}
 
 	handleAllDayClick(e){
 		let isActive = e.target.classList.contains('active');
@@ -135,14 +70,12 @@ class App extends Component{
 	render(){
 		const mouseUp = this.handleMouseUp.bind(this);
 		const mouseDown = this.handleMouseDown.bind(this);
-		const saveClick = this.handleSaveClick.bind(this);
-		const clearClick = this.handleClearClick.bind(this);
 		const allDayClick = this.handleAllDayClick.bind(this);
 		const schedule = this.props.schedule;
 
 
 		let dayRow = Object.keys(schedule).map(
-			i => <Day key={i} schedule={schedule[i]} arr={arr} day={i} />
+			i => <Day key={i} schedule={schedule[i]} day={i} />
 		);
 
 
@@ -160,14 +93,8 @@ class App extends Component{
 					{dayRow}
 				</div>
 
-				<div className="controls">
-					<button className="button" onClick={saveClick}>
-						save
-					</button>
-					<button className="button" onClick={clearClick}>
-						clear
-					</button>
-				</div>
+				<Controls />
+				
 			</div>
 		);
 	}
@@ -188,11 +115,7 @@ const mapDispatchToProps = dispatch => {
 		fetchInitial: () => dispatch(
 			action.fetchInitial()),
 		setNewDaySchedule: obj => dispatch(
-			action.setNewDaySchedule(obj)),
-		clearSchedule: obj => dispatch(
-			action.clearSchedule(obj)),
-		setAllDay: obj => dispatch(
-			action.setAllDay(obj))
+			action.setNewDaySchedule(obj))
 	};
 };
 

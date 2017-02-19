@@ -1,22 +1,27 @@
 import React from 'react';
 
-function Day({schedule, arr, day}) {
+function Day({schedule, day}) {
 	
-	const element = arr.map((item, i) => {
+	const HOURS = 24;
 
-		let range = (i+1)*60 - 1;
+	const element = [];
 
-		let isActive = schedule.map(elem => {
+	for(let i=0; i<HOURS; i++){
+		
+		const range = (i+1)*60 - 1;
+
+		const isActive = schedule.map(elem => {
 			if((range >= elem.bt)&&(range <= elem.et)){
 				return 'child active';
 			}
 		});
 
-		return(
-			<div key={item} data-range={ range } data-day={ day }
+		element.push(
+			<div key={i} data-range={ range } data-day={ day }
 				className={ isActive.includes('child active') ? 'child active' : 'child' }
 			></div>
-	)});
+		);
+	}
 
 	return(
 		<div>

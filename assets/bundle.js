@@ -10542,61 +10542,110 @@ var App = function (_Component) {
 	}, {
 		key: 'handleSaveClick',
 		value: function handleSaveClick() {
-			var _this2 = this;
-
 			var schedule = this.props.schedule;
 
 			Object.keys(schedule).map(function (day) {
 
-				var elements = document.querySelectorAll('[data-day=' + day + ']');
-				var arr = [];
+				var elements = [].slice.call(document.querySelectorAll('[data-day=' + day + ']'));
 
+				// const hello = elementsByDay.map(el => {
+				// 	let isActive = el.classList.contains('active');
+				// 	console.log(isActive);
+
+				// 	if(isActive){
+				// 		let range = el.getAttribute('data-range');
+				// 		let bt = range - 59;
+				// 		let et = +range;
+
+				// 		return {bt, et};
+				// 	}else{
+				// 		return false;
+				// 	}
+				// });
+
+
+				var arr = [];
 				for (var _i = 0; _i < elements.length; _i++) {
+
 					var isActive = elements[_i].classList.contains('active');
 
 					if (isActive) {
 						var range = elements[_i].getAttribute('data-range');
 						var bt = range - 59;
 						var et = +range;
+
 						arr.push({ bt: bt, et: et });
 					} else {
 						arr.push(false);
 					}
 				}
+				console.log(arr);
 
-				var arr3 = [];
-				var arr2 = [];
-				for (var _i2 = 0; _i2 < arr.length + 1; _i2++) {
-					if (arr[_i2]) {
-						arr2.push(arr[_i2]);
-					} else {
-						arr3.push(arr2);
-						arr2 = [];
-					}
-				}
+				// let boys = [];
+				// let girls = [];
 
-				var arr4 = arr3.filter(function (i) {
-					return i.length;
-				});
+				// arr.map((el,i) => {
+				// 	let hasPrev = !!arr[i-1];
+				// 	let hasNext = !!arr[i+1];
+				// 	let isEl = !!el;
 
-				var arr5 = [];
-				arr4.map(function (el, i) {
-					var obj = {};
-					if (el.length == 1) {
-						obj.bt = el[0].bt;
-						obj.et = el[0].et;
-						arr5.push(obj);
-					} else {
-						var last = el.length - 1;
-						obj.bt = el[0].bt;
-						obj.et = el[last].et;
-						arr5.push(obj);
-					}
-				});
+				// 	let first = (!hasPrev && hasNext && isEl);
+				// 	let last = (hasPrev && !hasNext && isEl);
+				// 	let single = (!hasPrev && !hasNext && isEl);
 
-				_this2.props.setNewDaySchedule({ day: day, arr5: arr5 });
+				// 	switch(true){
+				// 		case (single):{
+				// 			boys.push(el.bt)
+				// 			girls.push(el.et)
+				// 			break;
+				// 		}
+				// 		case (first):{
+				// 			boys.push(el.bt)
+				// 			break;
+				// 		}
+				// 		case (last):{
+				// 			girls.push(el.et)
+				// 			break;
+				// 		}
+				// 		default:
+				// 			break;
+				// 	}
+				// });
+				// console.log(boys);
+				// console.log(girls);
+
+
+				// let arr3 = [];
+				// let arr2 = [];
+				// for(let i=0; i<arr.length+1; i++){
+				// 	console.log(i);
+				// 	if(arr[i]){
+				// 		arr2.push(arr[i]);
+				// 	}else{
+				// 		arr3.push(arr2);
+				// 		arr2 = [];
+				// 	}
+				// }
+
+				// let arr4 = arr3.filter(i => i.length);
+
+				// let arr5 = [];
+				// arr4.map((el,i) => {
+				// 	let obj = {};
+				// 	if(el.length == 1){
+				// 		obj.bt = el[0].bt;
+				// 		obj.et = el[0].et;
+				// 		arr5.push(obj);
+				// 	}else{
+				// 		let last = el.length-1;
+				// 		obj.bt = el[0].bt;
+				// 		obj.et = el[last].et;
+				// 		arr5.push(obj);
+				// 	}
+				// });
+
+				// this.props.setNewDaySchedule({day, arr5});
 			});
-			console.log(schedule);
 		}
 	}, {
 		key: 'handleClearClick',
@@ -10722,28 +10771,21 @@ exports.default = reducer;
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var initial = {
-	mo: [{
-		bt: 240,
-		et: 779
-	}],
-	tu: [],
-	we: [],
+	// mo: [
+	//      {
+	//        bt: 240,
+	//        et: 779
+	//      }
+	// ],
+	// tu: [],
+	// we: [],
 	th: [{
 		bt: 240,
 		et: 779
 	}, {
 		bt: 1140,
 		et: 1319
-	}],
-	fr: [{
-		bt: 660,
-		et: 1019
-	}],
-	sa: [{
-		bt: 0,
-		et: 1439
-	}],
-	su: []
+	}]
 };
 
 function reducer() {

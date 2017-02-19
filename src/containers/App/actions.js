@@ -16,10 +16,3 @@ export function clearSchedule(obj) {
         payload: obj
     };
 }
-
-export function setAllDay(obj) {
-    return {
-        type: 'SET_ALL_DAY',
-        payload: obj
-    };
-}
