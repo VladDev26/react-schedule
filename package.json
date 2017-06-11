@@ -12,12 +12,19 @@
   "author": "",
   "license": "ISC",
   "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
     "extends": "airbnb",
     "rules": {
       "func-names": ["error", "never"],
       "no-tabs": 0,
+      "import/extensions": 0,
+      "no-underscore-dangle": 0,
       "comma-dangle": 0,
-      "indent": [2, "tab"],
+      "no-case-declarations": 0,
+      "indent": [0, "tab"],
       "react/prop-types": 0,
       "jsx-a11y/no-static-element-interactions": 0,
       "react/jsx-indent": 0,
@@ -25,6 +32,7 @@
       "quotes": [0, "double", "avoid-escape" ],
       "import/no-unresolved": 0,
       "arrow-parens": 0,
+      "react/jsx-wrap-multilines": 0,
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     }
   },
