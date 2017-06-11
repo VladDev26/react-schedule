@@ -11,6 +11,31 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "eslintConfig": {
+    "extends": "airbnb",
+    "rules": {
+      "func-names": ["error", "never"],
+      "no-tabs": 0,
+      "comma-dangle": 0,
+      "indent": [2, "tab"],
+      "react/prop-types": 0,
+      "jsx-a11y/no-static-element-interactions": 0,
+      "react/jsx-indent": 0,
+      "react/jsx-indent-props": 0,
+      "quotes": [0, "double", "avoid-escape" ],
+      "import/no-unresolved": 0,
+      "arrow-parens": 0,
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    }
+  },
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-bootstrap": "^0.31.0",
+    "react-bootstrap-table": "^3.4.0",
+    "react-dom": "^15.4.1",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0"
+  },
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
@@ -18,21 +43,21 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.22.0",
     "css-loader": "^0.26.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-prettier": "^2.1.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1",
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "file-loader": "^0.10.0",
     "html-loader": "^0.4.4",
     "node-sass": "^4.5.0",
+    "prettier": "^1.4.4",
     "redux-logger": "^2.8.1",
     "sass-loader": "^5.0.1",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
-  },
-  "dependencies": {
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
-    "react-redux": "^5.0.2",
-    "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
   }
 }
