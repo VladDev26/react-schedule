@@ -4,7 +4,7 @@ import Day from "./Day";
 import TimeRow from "./TimeRow";
 import DayNames from "./DayNames";
 import AllDay from "./AllDay";
-import Controls from "./Controls";
+import Controls from "../containers/ControlsContainer";
 
 class App extends Component {
   constructor() {

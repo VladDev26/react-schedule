@@ -30,9 +30,9 @@ class Controls extends Component {
 			const ets = [];
 
 			for (let i = 0; i < elements.length; i++) {
-				let prev = isExistsAndActive(i - 1);
-				let current = isExistsAndActive(i);
-				let next = isExistsAndActive(i + 1);
+				const prev = isExistsAndActive(i - 1);
+				const current = isExistsAndActive(i);
+				const next = isExistsAndActive(i + 1);
 
 				switch (true) {
 					//SINGLE
@@ -66,13 +66,13 @@ class Controls extends Component {
 	}
 
 	handleClearClick() {
-		const { schedule } = this.props;
+		const { schedule, clearSchedule } = this.props;
 		for (let day in schedule) {
 			schedule[day] = [];
 		}
 
 		// console.log('schedule', schedule);
-		this.props.clearSchedule(schedule);
+		clearSchedule(schedule);
 		const siblings = document.querySelectorAll(".child");
 		siblings.forEach(el => {
 			el.classList.remove("active");
@@ -80,6 +80,7 @@ class Controls extends Component {
 	}
 
 	render() {
+		console.log(this);
 		const { handleSaveClick, handleClearClick } = this;
 
 		return (
